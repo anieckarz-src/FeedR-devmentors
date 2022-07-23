@@ -45,16 +45,6 @@ services:
     networks:
       - feedr
   
-  feeds-weather:
-    build:
-      context: ../
-      dockerfile: src/Feeds/Weather/Dockerfile
-    container_name: feedr-feeds-weather
-    restart: unless-stopped
-    ports:
-      - 5040:80
-    networks:
-      - feedr
   
   feeds-quotes:
     build:
@@ -63,7 +53,18 @@ services:
     container_name: feedr-feeds-quotes
     restart: unless-stopped
     ports:
-      - 5051:80
+      - 5050:80
+    networks:
+      - feedr
+  
+  feeds-weather:
+    build:
+      context: ../
+      dockerfile: src/Feeds/Weather/Dockerfile
+    container_name: feedr-feeds-weather
+    restart: unless-stopped
+    ports:
+      - 5050:80
     networks:
       - feedr
 
